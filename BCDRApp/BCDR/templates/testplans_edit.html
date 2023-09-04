@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if testplan %}Edit{% else %}New{% endif %} Test Plan</title>
+</head>
+<body>
+    <h2>{% if testplan %}Edit{% else %}New{% endif %} Test Plan</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save changes</button>
+    </form>
+    {% if testplan %}
+    <a href="{% url 'testplans_detail' pk=testplan.testplanid %}">Cancel</a>
+    {% else %}
+    <a href="{% url 'testplans_list' %}">Cancel</a>
+    {% endif %}
+</body>
+</html>

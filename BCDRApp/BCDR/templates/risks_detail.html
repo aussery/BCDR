@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Risk Detail</title>
+</head>
+<body>
+    <h2>{{ risk.riskname }}</h2>
+    <p>ID: {{ risk.riskid }}</p>
+    <p>Likelihood: {{ risk.likelihood }}</p>
+    <p>Impact Type: {{ risk.impacttype }}</p>
+    <p>Impact Scale: {{ risk.impactscale }}</p>
+    <p>Risk Level: {{ risk.risklevel }}</p>
+    <a href="{% url 'risks_edit' pk=risk.riskid %}">Edit</a>
+    <form action="{% url 'risks_remove' pk=risk.riskid %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{% url 'risks_list' %}">Back to Risks</a>
+    <a href="{% url 'home' %}">Back to Home</a>
+
+</body>
+</html>

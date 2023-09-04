@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emergency Contact Detail</title>
+</head>
+<body>
+    <h2>{{ emergencycontact.name }}</h2>
+    <p>ID: {{ emergencycontact.contactid }}</p>
+    <p>Phone: {{ emergencycontact.phone }}</p>
+    <p>Email: {{ emergencycontact.email }}</p>
+    <p>Role: {{ emergencycontact.role }}</p>
+    <p>Department: {{ emergencycontact.department }}</p>
+    <a href="{% url 'emergencycontact_edit' pk=emergencycontact.contactid %}">Edit</a>
+    <form action="{% url 'emergencycontact_remove' pk=emergencycontact.contactid %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{% url 'emergencycontact_list' %}">Back to Emergency Contacts</a>
+    <a href="{% url 'home' %}">Back to Home</a>
+
+</body>
+</html>
