@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Plan Detail</title>
+</head>
+<body>
+    <h2>{{ testplan.testplanname }}</h2>
+    <p>ID: {{ testplan.testplanid }}</p>
+    <p>Date: {{ testplan.testdate }}</p>
+    <p>Result: {{ testplan.testresult }}</p>
+    <p>Details: {{ testplan.details }}</p>
+    <p>Strategy: {{ testplan.strategy }}</p>
+    <a href="{% url 'testplans_edit' pk=testplan.testplanid %}">Edit</a>
+    <form action="{% url 'testplans_remove' pk=testplan.testplanid %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{% url 'testplans_list' %}">Back to Test Plans</a>
+    <a href="{% url 'home' %}">Back to Home</a>
+
+</body>
+</html>

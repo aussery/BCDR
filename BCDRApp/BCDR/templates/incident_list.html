@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incidents</title>
+</head>
+<body>
+    <h2>Incidents</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Response Actions</th>
+            <th>Strategy</th>
+            <th></th>
+        </tr>
+        {% for incident in incidents %}
+        <tr>
+            <td>{{ incident.incidentid }}</td>
+            <td>{{ incident.incidentname }}</td>
+            <td>{{ incident.description }}</td>
+            <td>{{ incident.incidentdate }}</td>
+            <td>{{ incident.responseactions }}</td>
+            <td>{{ incident.strategy }}</td>
+            <td>
+                <a href="{% url 'incident_detail' pk=incident.incidentid %}">View</a>
+                <a href="{% url 'incident_edit' pk=incident.incidentid %}">Edit</a>
+                <form action="{% url 'incident_remove' pk=incident.incidentid %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'incident_new' %}">Add New Incident</a>
+</body>
+</html>

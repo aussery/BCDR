@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Business Process</title>
+</head>
+<body>
+    <h2>Are you sure you want to delete {{ businessprocess.processname }}?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'businessprocess_detail' pk=businessprocess.processid %}">Cancel</a>
+</body>
+</html>
