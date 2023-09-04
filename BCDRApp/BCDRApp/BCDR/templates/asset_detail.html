@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Detail</title>
+</head>
+<body>
+    <h2>{{ asset.assetname }}</h2>
+    <p>ID: {{ asset.assetid }}</p>
+    <p>Type: {{ asset.assettype }}</p>
+    <p>Location: {{ asset.location }}</p>
+    <p>Owner: {{ asset.owner }}</p>
+    <a href="{% url 'asset_edit' pk=asset.assetid %}">Edit</a>
+    <form action="{% url 'asset_remove' pk=asset.assetid %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{% url 'asset_list' %}">Back to Assets</a>
+    <a href="{% url 'home' %}">Back to Home</a>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if businessprocess %}Edit{% else %}New{% endif %} Business Process</title>
+</head>
+<body>
+    <h2>{% if businessprocess %}Edit{% else %}New{% endif %} Business Process</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save changes</button>
+    </form>
+    {% if businessprocess %}
+    <a href="{% url 'businessprocess_detail' pk=businessprocess.processid %}">Cancel</a>
+    {% else %}
+    <a href="{% url 'businessprocess_list' %}">Cancel</a>
+    {% endif %}
+</body>
+</html>
