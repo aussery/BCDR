@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if incident %}Edit{% else %}New{% endif %} Incident</title>
+</head>
+<body>
+    <h2>{% if incident %}Edit{% else %}New{% endif %} Incident</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save changes</button>
+    </form>
+    {% if incident %}
+    <a href="{% url 'incident_detail' pk=incident.incidentid %}">Cancel</a>
+    {% else %}
+    <a href="{% url 'incident_list' %}">Cancel</a>
+    {% endif %}
+</body>
+</html>

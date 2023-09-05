@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if emergencycontact %}Edit{% else %}New{% endif %} Emergency Contact</title>
+</head>
+<body>
+    <h2>{% if emergencycontact %}Edit{% else %}New{% endif %} Emergency Contact</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save changes</button>
+    </form>
+    {% if emergencycontact %}
+    <a href="{% url 'emergencycontact_detail' pk=emergencycontact.contactid %}">Cancel</a>
+    {% else %}
+    <a href="{% url 'emergencycontact_list' %}">Cancel</a>
+    {% endif %}
+</body>
+</html>
